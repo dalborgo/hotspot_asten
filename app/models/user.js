@@ -1,5 +1,6 @@
 // load the things we need
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 var bcrypt   = require('bcrypt-nodejs');
 
 // define the schema for our user model
@@ -13,7 +14,12 @@ var userSchema = mongoose.Schema({
         id           : String,
         token        : String,
         email        : String,
-        name         : String
+        name         : String,
+        photo        : String,
+        profile_url  : String,
+        age_range    : String,
+        birthday     : String,
+        locale       : String
     },
     twitter          : {
         id           : String,
@@ -25,7 +31,10 @@ var userSchema = mongoose.Schema({
         id           : String,
         token        : String,
         email        : String,
-        name         : String
+        name         : String,
+        picture      : String,
+        link         : String,
+        locale       : String
     }
 
 });

@@ -164,7 +164,11 @@ module.exports = function(passport) {
                             user.facebook.token = token;
                             user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                             user.facebook.email = (profile.emails[0].value || '').toLowerCase();
-
+                            user.facebook.photo = profile.photos[0].value;
+                            user.facebook.profile_url = profile.profileUrl;
+                            user.facebook.birthday = profile._json['birthday'];
+                            user.facebook.age_range = profile._json.age_range.min;
+                            user.facebook.locale = profile._json.locale;
                             user.save(function(err) {
                                 if (err)
                                     return done(err);
@@ -182,6 +186,11 @@ module.exports = function(passport) {
                         newUser.facebook.token = token;
                         newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                         newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
+                        newUser.facebook.photo = profile.photos[0].value;
+                        newUser.facebook.profile_url = profile.profileUrl;
+                        newUser.facebook.birthday = profile._json['birthday'];
+                        newUser.facebook.age_range = profile._json.age_range.min;
+                        newUser.facebook.locale = profile._json.locale;
 
                         newUser.save(function(err) {
                             if (err)
@@ -200,6 +209,11 @@ module.exports = function(passport) {
                 user.facebook.token = token;
                 user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                 user.facebook.email = (profile.emails[0].value || '').toLowerCase();
+                user.facebook.photo = profile.photos[0].value;
+                user.facebook.profile_url = profile.profileUrl;
+                user.facebook.birthday = profile._json['birthday'];
+                user.facebook.age_range = profile._json.age_range.min;
+                user.facebook.locale = profile._json.locale;
 
                 user.save(function(err) {
                     if (err)
@@ -321,6 +335,9 @@ module.exports = function(passport) {
                             user.google.token = token;
                             user.google.name  = profile.displayName;
                             user.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
+                            user.google.locale = profile._json['language'];
+                            user.google.picture = profile.photos[0].value;
+                            user.google.link = profile._json['url'];
 
                             user.save(function(err) {
                                 if (err)
@@ -338,7 +355,9 @@ module.exports = function(passport) {
                         newUser.google.token = token;
                         newUser.google.name  = profile.displayName;
                         newUser.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
-
+                        newUser.google.locale = profile._json['language']; // pull the first email
+                        newUser.google.picture = profile.photos[0].value; // pull the first email
+                        newUser.google.link = profile._json['url']; // pull the first email
                         newUser.save(function(err) {
                             if (err)
                                 return done(err);
@@ -356,6 +375,9 @@ module.exports = function(passport) {
                 user.google.token = token;
                 user.google.name  = profile.displayName;
                 user.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
+                user.google.locale = profile._json['language'];
+                user.google.picture = profile.photos[0].value;
+                user.google.link = profile._json['url'];
 
                 user.save(function(err) {
                     if (err)
