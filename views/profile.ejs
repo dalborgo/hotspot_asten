@@ -30,7 +30,9 @@
                 <p>
                     <strong>id</strong>: <%= user._id %><br>
                     <strong>email</strong>: <%= user.local.email %><br>
-                    <strong>password</strong>: <%= user.local.password %>
+                    <strong>room</strong>: <%= user.local.room %><br>
+                    <strong>name</strong>: <%= user.local.name %><br>
+                    <strong>surname</strong>: <%= user.local.surname %>
                 </p>
 
                 <a href="/unlink/local" class="btn btn-default">Unlink</a>
@@ -136,10 +138,7 @@
     </div>
 
     <div class="text-center">
-        <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-        <p>Visit the <a
-                    href="http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local">tutorial</a>.
-        </p>
+        <p>Powered by <a href="http://scotch.io">Asten Srl</a>.</p>
     </div>
 
 </div>
