@@ -105,7 +105,7 @@ module.exports = function(app, passport) {
     // facebook -------------------------------
 
         // send to facebook to do the authentication
-        app.get('/connect/facebook', passport.authorize('facebook', { scope : ['email','user_birthday'] }));
+        app.get('/connect/facebook', passport.authorize('facebook', { scope : ['email'] }));
 
         // handle the callback after facebook has authorized the user
         app.get('/connect/facebook/callback',

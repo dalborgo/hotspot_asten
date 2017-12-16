@@ -165,11 +165,6 @@ module.exports = function(passport) {
                             user.facebook.token = token;
                             user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                             user.facebook.email = (profile.emails[0].value || '').toLowerCase();
-                            user.facebook.photo = profile.photos[0].value;
-                            user.facebook.profile_url = profile.profileUrl;
-                            user.facebook.birthday = profile._json['birthday'];
-                            user.facebook.age_range = profile._json.age_range.min;
-                            user.facebook.locale = profile._json.locale;
                             user.save(function(err) {
                                 if (err)
                                     return done(err);
@@ -187,12 +182,6 @@ module.exports = function(passport) {
                         newUser.facebook.token = token;
                         newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                         newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
-                        newUser.facebook.photo = profile.photos[0].value;
-                        newUser.facebook.profile_url = profile.profileUrl;
-                        newUser.facebook.birthday = profile._json['birthday'];
-                        newUser.facebook.age_range = profile._json.age_range.min;
-                        newUser.facebook.locale = profile._json.locale;
-
                         newUser.save(function(err) {
                             if (err)
                                 return done(err);
@@ -209,13 +198,6 @@ module.exports = function(passport) {
                 user.facebook.id    = profile.id;
                 user.facebook.token = token;
                 user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
-                user.facebook.email = (profile.emails[0].value || '').toLowerCase();
-                user.facebook.photo = profile.photos[0].value;
-                user.facebook.profile_url = profile.profileUrl;
-                user.facebook.birthday = profile._json['birthday'];
-                user.facebook.age_range = profile._json.age_range.min;
-                user.facebook.locale = profile._json.locale;
-
                 user.save(function(err) {
                     if (err)
                         return done(err);
