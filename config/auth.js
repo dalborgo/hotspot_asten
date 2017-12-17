@@ -6,15 +6,8 @@ module.exports = {
     'facebookAuth' : {
         'clientID' 		: '765662486940305', // your App ID
         'clientSecret' 	: '7b9fadd8f57f93de1ecb0a9a1487e14b', // your App Secret
-        'callbackURL' 	: 'http://hot.asten.it:8080/auth/facebook/callback',
         'profileFields' : ['emails', 'first_name', 'last_name'],
         'profileURL': 'https://graph.facebook.com/v2.5/me?fields=first_name,last_name,email'
-    },
-
-    'twitterAuth' : {
-        'consumerKey'        : 'your-consumer-key-here',
-        'consumerSecret'     : 'your-client-secret-here',
-        'callbackURL'        : 'http://localhost:8080/auth/twitter/callback'
     },
 
     'googleAuth' : {

@@ -10,19 +10,15 @@ var userSchema = mongoose.Schema({
         email        : String,
         room         : String,
         name         : String,
-        surname      : String
+        surname      : String,
+        hotel        : String
     },
     facebook         : {
         id           : String,
         token        : String,
         email        : String,
-        name         : String
-    },
-    twitter          : {
-        id           : String,
-        token        : String,
-        displayName  : String,
-        username     : String
+        name         : String,
+        hotel        : String
     },
     google           : {
         id           : String,
@@ -31,7 +27,8 @@ var userSchema = mongoose.Schema({
         name         : String,
         picture      : String,
         link         : String,
-        locale       : String
+        locale       : String,
+        hotel        : String
     }
 
 });

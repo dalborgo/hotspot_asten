@@ -28,6 +28,7 @@
 
                 <% if (user.local.email) { %>
                 <p>
+                    <strong>hotel</strong>: <%= user.local.hotel %>
                     <strong>id</strong>: <%= user._id %><br>
                     <strong>email</strong>: <%= user.local.email %><br>
                     <strong>room</strong>: <%= user.local.room %><br>
@@ -56,6 +57,7 @@
                 <!-- check if the user has this token (is the user authenticated with this social account) -->
                 <% if (user.facebook.token) { %>
                 <p>
+                    <strong>hotel</strong>: <%= user.facebook.hotel %><br>
                     <strong>id</strong>: <%= user.facebook.id %><br>
                     <!--<strong>token</strong>: <%= user.facebook.token %><br>-->
                     <strong>email</strong>: <%= user.facebook.email %><br>
@@ -72,26 +74,6 @@
     </div>
     <div class="row">
 
-        <!-- TWITTER INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
-
-                <% if (user.twitter.token) { %>
-                <p>
-                    <strong>id</strong>: <%= user.twitter.id %><br>
-                    <strong>token</strong>: <%= user.twitter.token %><br>
-                    <strong>display name</strong>: <%= user.twitter.displayName %><br>
-                    <strong>username</strong>: <%= user.twitter.username %>
-                </p>
-
-                <a href="/unlink/twitter" class="btn btn-info">Unlink</a>
-                <% } else { %>
-                <a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
-                <% } %>
-
-            </div>
-        </div>
 
         <!-- GOOGLE INFORMATION -->
         <div class="col-sm-6">
@@ -105,6 +87,7 @@
 
                 <% if (user.google.token) { %>
                 <p>
+                    <strong>hotel</strong>: <%= user.google.hotel %><br>
                     <strong>id</strong>: <%= user.google.id %><br>
                     <!--<strong>token</strong>: <%= user.google.token %><br>-->
                     <strong>email</strong>: <%= user.google.email %><br>

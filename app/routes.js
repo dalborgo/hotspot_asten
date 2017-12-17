@@ -62,18 +62,23 @@ module.exports = function(app, passport) {
                 successRedirect : '/profile',
                 failureRedirect : '/'
             }));
+    app.get('/auth/facebook/login/:id', function(req,res,next) {
+        passport.authenticate(
+            'facebook',
+            {callbackURL: '/auth/facebook/login_callback/'+req.params.id }
+        )(req,res,next);
+    });
 
-    // twitter --------------------------------
-
-        // send to twitter to do the authentication
-        app.get('/auth/twitter', passport.authenticate('twitter', { scope : 'email' }));
-
-        // handle the callback after twitter has authenticated the user
-        app.get('/auth/twitter/callback',
-            passport.authenticate('twitter', {
-                successRedirect : '/profile',
-                failureRedirect : '/'
-            }));
+    app.get('/auth/facebook/login_callback/:id', function(req,res,next) {
+        passport.authenticate(
+            'facebook',
+            {
+                callbackURL:"/auth/facebook/login_callback/"+req.params.id
+                , successRedirect:"/profile"
+                , failureRedirect:"/"
+            }
+        ) (req,res,next);
+    });
 
 
     // google ---------------------------------
@@ -114,17 +119,6 @@ module.exports = function(app, passport) {
                 failureRedirect : '/'
             }));
 
-    // twitter --------------------------------
-
-        // send to twitter to do the authentication
-        app.get('/connect/twitter', passport.authorize('twitter', { scope : 'email' }));
-
-        // handle the callback after twitter has authorized the user
-        app.get('/connect/twitter/callback',
-            passport.authorize('twitter', {
-                successRedirect : '/profile',
-                failureRedirect : '/'
-            }));
 
 
     // google ---------------------------------
@@ -165,14 +159,6 @@ module.exports = function(app, passport) {
         });
     });
 
-    // twitter --------------------------------
-    app.get('/unlink/twitter', isLoggedIn, function(req, res) {
-        var user           = req.user;
-        user.twitter.token = undefined;
-        user.save(function(err) {
-            res.redirect('/profile');
-        });
-    });
 
     // google ---------------------------------
     app.get('/unlink/google', isLoggedIn, function(req, res) {
